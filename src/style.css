@@ -1,12 +1,154 @@
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+    margin:0px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+}
+.body-wrapper {
+    height: 100%;
+    background: hsl(217, 54%, 11%);
+    padding-top: 50px;
+  }
+.full-height {
+    height: 90%;
+  }
+.container {
+    
+    width: auto;
+    height: auto;
+    margin: auto;
+}
 
+/* 3D animation */
 
+.card-component:hover{
+    transform: translateY(-6px);
+    cursor: pointer;
+}
+.card-component:active{
+    transform: translateY(-2px);
+}
+/* Card Component */
+.card-component {
+    width: 240px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: rgb(20, 37, 61);
+    box-shadow: var(--shadow-elevation-high);
+    
+}
+.card-main{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+.card-image {
+    align-self: center;
+    padding: 20px;
+}
+.card-image img {
+    height: 200px;
+    border-radius: 7px;
+}
+.card-info, .card-value, .card-footer{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
+.card-title {
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 2em;
+}
+.card-description{
+    color: hsl(215, 51%, 70%);
+    font-weight: 300;
+    font-size: .65em;
+}
+.card-value {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid hsl(215, 51%, 70%);
+    padding: 10px 0px;
+}
+.value-nft img{
+    margin-right: 5px;
+    height: 80%;
+    align-self: center;
+}
+.card-value .value-nft {
+    color: hsl(178, 100%, 50%);
+    font-weight: 500;
+    font-size: .75em;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.expire-day img{
+    margin-right: 5px;
+    height: 80%;
+    align-self: center;
+}
+.card-value .expire-day {
+    color: hsl(215, 51%, 70%);
+    font-weight: 400;
+    font-size: .75em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-card {
+    color: hsl(215, 51%, 70%);
+    font-weight: 300;
+    font-size: .65em;
+    display: flex;
+    margin: 10px 20px 20px 20px;
+}
+.footer-card img {
+    height: 25px;
+    border: 1px solid white;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+.footer-card p {
+    padding: auto;
+    margin: auto 0;
+}
+.footer-card .creator {
+    color: white;
+}
 
 .attribution { 
+    color: rgb(0, 0, 0);
     font-size: 11px; 
     text-align: center; 
+    padding-top: 10px;
 }
 .attribution a { 
     color: hsl(228, 45%, 44%); 
 }
+
+
+:root {
+    --shadow-color: 216deg 77% 6%;
+    --shadow-elevation-low:
+      0px 0.8px 0.8px hsl(var(--shadow-color) / 0.4),
+      0px 1.2px 1.2px -1.5px hsl(var(--shadow-color) / 0.35),
+      0px 3px 3.1px -3.1px hsl(var(--shadow-color) / 0.3);
+    --shadow-elevation-medium:
+      0px 0.8px 0.8px hsl(var(--shadow-color) / 0.42),
+      0px 2.2px 2.3px -1px hsl(var(--shadow-color) / 0.38),
+      -0.1px 6px 6.2px -2.1px hsl(var(--shadow-color) / 0.34),
+      -0.2px 15.2px 15.7px -3.1px hsl(var(--shadow-color) / 0.3);
+    --shadow-elevation-high:
+      0px 0.8px 0.8px hsl(var(--shadow-color) / 0.39),
+      -0.1px 3.5px 3.6px -0.4px hsl(var(--shadow-color) / 0.37),
+      -0.1px 6.7px 6.9px -0.9px hsl(var(--shadow-color) / 0.35),
+      -0.2px 11.6px 12px -1.3px hsl(var(--shadow-color) / 0.33),
+      -0.3px 19.4px 20.1px -1.8px hsl(var(--shadow-color) / 0.31),
+      -0.5px 31.5px 32.6px -2.2px hsl(var(--shadow-color) / 0.3),
+      -0.8px 49.1px 50.8px -2.7px hsl(var(--shadow-color) / 0.28),
+      -1.2px 73.5px 76.1px -3.1px hsl(var(--shadow-color) / 0.26);
+  }
