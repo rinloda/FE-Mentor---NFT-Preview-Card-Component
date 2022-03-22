@@ -20,11 +20,11 @@ pipeline {
         stage('Docker push'){
             steps {
                 echo 'Message: Starting to push with git-branch tag'
-                sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IAMGE}:${DOCKER_TAG}'
+                sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}'
                 echo 'Message: Starting to push with latest tag'
-                sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IAMGE}:latest'
+                sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
                 echo 'Message: Remove an image with git-branch tag in Server1'
-                sh 'sudo docker image rm ${DOCKER_IAMGE}:${DOCKER_TAG}'
+                sh 'sudo docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
             }
         }
     }
