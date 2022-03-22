@@ -4,7 +4,7 @@ pipeline {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
         DOCKER_REGISTRY="18.142.49.158:8080"
         DOCKER_IMAGE="nft-component"
-        SERVER3="13.229.114.172"
+        SERVER3="18.142.47.71"
     }
     stages {
         stage('Docker build'){
