@@ -38,7 +38,7 @@ pipeline {
             steps{
                 sshagent(['ssh-remote-server3']) {
                 sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker pull ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
-                sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker rm $(sudo docker ps -a -q)'
+                // sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker rm $(sudo docker ps -a -q)'
                 sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker run -d -p 80:80 ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
                 }
             }
