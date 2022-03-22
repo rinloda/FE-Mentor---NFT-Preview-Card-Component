@@ -8,23 +8,23 @@ pipeline {
     stages {
         stage('Docker build'){
             steps {
-                echo 'Docker will start to building an image based on Dockerfile'
-                sh 'sudo docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
-                echo 'Docker will start to tagging an image based on Git branch to Docker Registry'
-                sh 'sudo docker tag -t ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}'
-                echo 'Tagging with the latest tag'
-                sh 'sudo docker tag -t ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
+                echo 'Message: Docker will start to building an image based on Dockerfile'
+                sh 'sudo -s docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
+                echo 'Message: Docker will start to tagging an image based on Git branch to Docker Registry'
+                sh 'sudo -s docker tag -t ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}'
+                echo 'Message: Tagging with the latest tag'
+                sh 'sudo -s docker tag -t ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
             }
         }
 
         stage('Docker push'){
             steps {
-                echo 'Starting to push with git-branch tag'
-                sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IAMGE}:${DOCKER_TAG}'
-                echo 'Starting to push with latest tag'
-                sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IAMGE}:latest'
-                echo 'Remove an image with git-branch tag in Server1'
-                sh 'sudo docker image rm ${DOCKER_IAMGE}:${DOCKER_TAG}'
+                echo 'Message: Starting to push with git-branch tag'
+                sh 'sudo -s docker push ${DOCKER_REGISTRY}/${DOCKER_IAMGE}:${DOCKER_TAG}'
+                echo 'Message: Starting to push with latest tag'
+                sh 'sudo -s docker push ${DOCKER_REGISTRY}/${DOCKER_IAMGE}:latest'
+                echo 'Message: Remove an image with git-branch tag in Server1'
+                sh 'sudo -s docker image rm ${DOCKER_IAMGE}:${DOCKER_TAG}'
             }
         }
     }
