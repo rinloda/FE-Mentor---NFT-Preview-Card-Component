@@ -27,5 +27,10 @@ pipeline {
                 sh 'sudo docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
             }
         }
+        stage('SSH Server3'){
+            sshagent(['ssh-remote-server3']) {
+                sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} touch test.txt'
+            }
+        }
     }
 }
