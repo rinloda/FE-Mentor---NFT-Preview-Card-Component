@@ -7,6 +7,11 @@ pipeline {
         SERVER3="18.142.47.71"
     }
     stages {
+        stage('Clone stages') {
+            steps {
+                git credentialsId: 'github_id', url: 'https://github.com/rinloda/sprits-club.git'
+            }
+        }
         stage('Docker build'){
             steps {
                 echo 'Message: Docker will start to building an image based on Dockerfile'
@@ -25,7 +30,7 @@ pipeline {
                 echo 'Message: Starting to push with latest tag'
                 sh 'sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
                 echo 'Message: Remove an image with git-branch tag in Server1'
-                sh 'sudo docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                sh 'sudo docker image rm ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}'
             }
         }
 
@@ -33,6 +38,7 @@ pipeline {
             steps{
                 sshagent(['ssh-remote-server3']) {
                 sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker pull ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
+                sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker rm $(docker ps -a -q)'
                 sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${SERVER3} docker run -d -p 80:80 ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:latest'
                 }
             }
