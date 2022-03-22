@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone stages') {
             steps {
-                git credentialsId: 'github_id', url: 'git@github.com:rinloda/FE-Mentor-NFT-Preview-Card-Component.git'
+                git credentialsId: 'github_id', url: 'https://github.com/rinloda/FE-Mentor-NFT-Preview-Card-Component.git'
             }
         }
         stage('Docker build'){
